@@ -1,11 +1,16 @@
 import FetchTodo from "./components/FetchTodo";
 import FetchTodoNew from "./components/FetchTodoNew";
+import Form from "./components/Form";
+
 import Theme from "./components/Theme";
+import UseFormStatus from "./components/useFormStatus";
 import "./index.css";
 
 const App = () => {
   return (
     <div>
+      <UseFormStatus />
+      <Form />
       <Theme />
       <FetchTodo />
       <FetchTodoNew />
