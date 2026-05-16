@@ -46,13 +46,14 @@ Instead of relying on legacy hooks and workarounds, the architectural pattern sh
 
 ## ⏱️ Learning & Effort Log
 
-| Video Timeline          | Video Duration | Session Focus                                                                   | Time Spent (Actual) | **Accumulated Effort** |
-| :---------------------- | :------------- | :------------------------------------------------------------------------------ | :------------------ | :--------------------- |
-| **11:29:00 - 12:13:00** | 44 mins        | **Ecosystem Components Overview** (Shadcn UI, Radix, Daisy UI, React Hook Form) | 45 mins             | **0h 45m**             |
-| **12:13:00 - 12:18:00** | 5 mins         | **React 19 High-Level Architectural Theory** (Compiler, New Hooks Overview)     | 45 mins             | **1h 30m**             |
-| **12:18:00 - 12:28:00** | 10 mins        | **Repo Initialization, Tailwind v4 Fix & `use()` Hook Groundwork**              | 50 mins             | **2h 20m**             |
+| Video Timeline          | Video Duration | Session Focus                                                                                   | Time Spent (Actual) | **Accumulated Effort** |
+| :---------------------- | :------------- | :---------------------------------------------------------------------------------------------- | :------------------ | :--------------------- |
+| **11:29:00 - 12:13:00** | 44 mins        | **Ecosystem Components Overview** (Shadcn UI, Radix, Daisy UI, React Hook Form)                 | 45 mins             | **0h 45m**             |
+| **12:13:00 - 12:18:00** | 5 mins         | **React 19 High-Level Architectural Theory** (Compiler, New Hooks Overview)                     | 45 mins             | **1h 30m**             |
+| **12:18:00 - 12:28:00** | 10 mins        | **Repo Initialization, Tailwind v4 Fix & `use()` Hook Groundwork**                              | 50 mins             | **2h 20m**             |
+| **12:28:00 - 12:53:00** | 25 mins        | **Deepening Hook Understanding** (FormData, `useFormStatus`, `useActionState`, `useTransition`) | 2h 35m              | **4h 55m**             |
 
-**Total Seat Time**: 2 hours 20 minutes (2h 20m)
+**Total Seat Time**: 4 hours 55 minutes (4h 55m)
 
 ---
 
@@ -67,6 +68,13 @@ Instead of relying on legacy hooks and workarounds, the architectural pattern sh
 - **Object Reference Equality (ORE):** Implemented `use(promise)`. Handled reference stability by hoisting the promise resource outside the component body to prevent infinite loop suspensions.
 - **Context Ingestion:** Replaced legacy `useContext` with the native `use(Context)` primitive.
 
+### 3. React 19 Native Forms & Concurrent Rendering
+
+- **Native Form Actions:** Implemented standard form data handling using browser-native `FormData` wrappers, accessing submitted user parameters cleanly via the `.get()` API.
+- **Form Submission Lifecycle (`useFormStatus`):** Integrated the native status hook to capture form lifecycle context, safely handling `pending` flags inside nested DOM child button instances.
+- **Localized Action States (`useActionState`):** Mastered centralized state management within a single component. Combined form submission execution logic with an inline `isPending` state without forcing child consumer nesting.
+- **Concurrent Transitions (`useTransition`):** Optimized application main-thread performance during high-overhead DOM computations (e.g., loading 100,000 array entries) by decoupling non-urgent UI rendering pipelines.
+
 ---
 
 ## 📋 Target Phase Out Tracker
@@ -76,5 +84,6 @@ Instead of relying on legacy hooks and workarounds, the architectural pattern sh
 - **Replacing:** `useEffect` fetching ──► **Handled by:** `use(Promise)`
 - **Replacing:** `forwardRef` ──► **Handled by:** Native `ref` prop passing
 - **Replacing:** Manual form loading states ──► **Handled by:** Actions (`useActionState` / `useFormStatus`)ThemeContext`directly into`use()`, unlocking the ability to run context consumption flexibly.
+- **Replacing:** Local `useState`/`useEffect` loading spinners ──► **Handled by:** `useActionState`, `useFormStatus`, and `useTransition`
 
 ---
