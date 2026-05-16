@@ -6,10 +6,12 @@ import Form from "./components/Form";
 import Theme from "./components/Theme";
 import UseFormStatus from "./components/useFormStatus";
 import "./index.css";
+import UseTransition from "./components/UseTransition";
 
 const App = () => {
   return (
     <div>
+      <UseTransition />
       <UseActionState />
       <UseFormStatus />
       <Form />
