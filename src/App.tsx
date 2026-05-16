@@ -1,3 +1,4 @@
+import UseActionState from "./components/UseActionState";
 import FetchTodo from "./components/FetchTodo";
 import FetchTodoNew from "./components/FetchTodoNew";
 import Form from "./components/Form";
@@ -9,6 +10,7 @@ import "./index.css";
 const App = () => {
   return (
     <div>
+      <UseActionState />
       <UseFormStatus />
       <Form />
       <Theme />
